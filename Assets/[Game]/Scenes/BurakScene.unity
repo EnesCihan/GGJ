@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 319483750}
   - component: {fileID: 319483749}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SceneRestarter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
