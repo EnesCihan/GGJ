@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-#region StringParams
-#endregion
-#region IntParams
-#endregion
-#region FloatParams
-#endregion
-#region GameObjectParams
-#endregion
-#region MyMethods
-#endregion
-#region MonoBehaviourFunctions
+    #region Params
+    
+    #endregion
+    #region MyMethods
+    #endregion  
+    #region MonoBehaviourFunctions
     void Awake()
     {
         
@@ -35,6 +30,6 @@ public class GameManager : MonoBehaviour
     {
         
     }
-#endregion
+    #endregion
 
 }
