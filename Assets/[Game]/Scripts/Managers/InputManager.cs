@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
-
+using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     #region Params
