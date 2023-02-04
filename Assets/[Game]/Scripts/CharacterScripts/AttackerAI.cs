@@ -5,7 +5,6 @@ public class AttackerAI : MonoBehaviour,IAIBrain
 {
     #region Params
     Camera myCam;
-    NavMeshAgent myAgent;
     public CharacterData data;
     [SerializeField]
     private LayerMask ground;
@@ -19,27 +18,16 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     void Awake()
     {
         NMAgent.speed = data.Speed;
+        NMAgent.SetDestination(transform.position);
     }
-    private void OnEnable()
-    {
-	  
-    }
-    private void OnDisable()
-    {
-	  
-    }
+
     void Start()
     {
         myCam = Camera.main;
-        myAgent = GetComponent<NavMeshAgent>();
     }
     void Update()
     {
-        if (isSelected == false)
-        {
-            myAgent.SetDestination(transform.position);
-            return;
-        }
+
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
@@ -47,8 +35,7 @@ public class AttackerAI : MonoBehaviour,IAIBrain
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
             {
-                myAgent.SetDestination(hit.point);
-                print("get");
+                NMAgent.SetDestination(hit.point);
             }
         }
     }
