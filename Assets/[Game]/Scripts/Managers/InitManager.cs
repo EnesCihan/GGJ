@@ -1,12 +1,11 @@
 using System.Collections;
-using UnityEditor;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InitManager : Singleton<InitManager>
 {
     #region Parameters
     public static InitManager instance = null;
+
     #endregion
     #region MonoBehaviour Methods
     private void Start()
@@ -34,18 +33,19 @@ public class InitManager : Singleton<InitManager>
     }
     private void CloseGameScene()
     {
-
+        SceneManager.UnloadSceneAsync(2);
     }
     #endregion
     private void OnEnable()
     {
-        EventManager.OnGameStart.AddListener(OpenGameScene);
-        EventManager.OnMenu.AddListener(OpenGameScene);
+        EventManager.OnLevelStart.AddListener(OpenGameScene);
+        EventManager.OnMenu.AddListener(CloseGameScene);
 
     }
     private void OnDisable()
     {
-        EventManager.OnGameStart.RemoveListener(OpenGameScene);
+        EventManager.OnLevelStart.RemoveListener(OpenGameScene);
+        EventManager.OnMenu.RemoveListener(CloseGameScene);
 
     }
 }

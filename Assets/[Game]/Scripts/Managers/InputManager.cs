@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
-using System.Collections.Generic;
 public class InputManager : Singleton<InputManager>
 {
     #region Params
-    bool onGame;
-    bool onMenu;
-    bool onOptions;
+    [HideInInspector]
+    public bool onGame;
+    [HideInInspector]
+    public bool onMenu;
+    [HideInInspector]
+    public bool onOptions;
     #endregion
+    #region Events
     public static Vector3Event OnMouseClick = new Vector3Event();
     public static UnityEvent OnMouseUp = new UnityEvent();
+    #endregion
     #region MyMethods
     private void SettingsMenu()
     {
@@ -30,12 +33,7 @@ public class InputManager : Singleton<InputManager>
         onOptions = false;
         onGame = true;
     }
-    private void OnStartGame()
-    {
-        onMenu = false;
-        onOptions = false;
-        onGame = false;
-    }
+
     #endregion
     #region MonoBehaviourFunctions
 
@@ -43,7 +41,7 @@ public class InputManager : Singleton<InputManager>
     {
         EventManager.OnLevelStart.AddListener(OnGameOpen);
         EventManager.OnMenu.AddListener(OnMenu);
-        EventManager.OnGameStart.AddListener(OnStartGame);
+        EventManager.OnResumeGame.AddListener(OnGameOpen);
         EventManager.OpenSettingsMenu.AddListener(SettingsMenu);
         EventManager.CloseSettingsMenu.AddListener(OnGameOpen);
     }
@@ -51,26 +49,18 @@ public class InputManager : Singleton<InputManager>
     {
         EventManager.OnLevelStart.RemoveListener(OnGameOpen);
         EventManager.OnMenu.RemoveListener(OnMenu);
-        EventManager.OnGameStart.RemoveListener(OnStartGame);
         EventManager.OpenSettingsMenu.RemoveListener(SettingsMenu);
+        EventManager.OnResumeGame.RemoveListener(OnGameOpen);
         EventManager.CloseSettingsMenu.RemoveListener(OnGameOpen);
 
     }
-    public LayerMask selectableLayer;
     void Update()
     {
-        if (!onGame && !onMenu && !onOptions)
+        if (onGame)
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                ESCKeyCheck();
             if (Input.GetMouseButtonDown(0))
-            {
-                EventManager.OnLevelStart.Invoke();
-            }
-        }
-        if(onGame)
-        {
-            ShiftKeyCheck();
-            ESCKeyCheck();
-            if(Input.GetMouseButtonDown(0))
             {
                 OnMouseClick.Invoke(Input.mousePosition);
             }
@@ -79,33 +69,14 @@ public class InputManager : Singleton<InputManager>
                 OnMouseUp.Invoke();
             }
         }
-
-        if (onOptions)
-        {
-            ESCKeyCheck();
-        }
     }
-    private void UnitSelection()
-    {
 
-    }
-    private void ShiftKeyCheck()
-    {
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-
-        }
-    }
     private void ESCKeyCheck()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            if(onOptions)
-                EventManager.CloseSettingsMenu.Invoke();
-            else
-                EventManager.OpenSettingsMenu.Invoke();
-        }
+        if (onOptions)
+            EventManager.CloseSettingsMenu.Invoke();
+        else
+            EventManager.OpenSettingsMenu.Invoke();
     }
     #endregion
-
 }

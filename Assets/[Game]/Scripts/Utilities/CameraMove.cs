@@ -12,7 +12,6 @@ public class CameraMove : MonoBehaviour
     void Update()
     {
         Move();
-        
     }
 
     private void Move()

@@ -66,11 +66,13 @@ public class RTSDrag : MonoBehaviour
     {
         EventManager.OnLevelStart.AddListener(()=>canWork=true);
         EventManager.OpenSettingsMenu.AddListener(()=>canWork=false);
+        EventManager.OnResumeGame.AddListener(()=>canWork= true);
     }
     private void OnDisable()
     {
         EventManager.OnLevelStart.RemoveListener(()=>canWork=true);
         EventManager.OpenSettingsMenu.RemoveListener(() => canWork = false);
+        EventManager.OnResumeGame.RemoveListener(() => canWork = true);
 
     }
     void Start()

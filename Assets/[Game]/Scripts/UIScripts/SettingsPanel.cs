@@ -11,17 +11,21 @@ public class SettingsPanel : MonoBehaviour
     public void ResumeGame()
     {
         PanelBase.HidePanel();
-        EventManager.OnMenu.Invoke();
+
+        EventManager.OnResumeGame.Invoke();
+
     }
     public void GoBackMenu()
     {
         PanelBase.HidePanel();
-        EventManager.OnGameStart.Invoke();
+
+        EventManager.OnMenu.Invoke();
 
     }
     private void OpenSettings()
     {
         PanelBase.ShowPanel();
+
     }
     #endregion
     #region MonoBehaviourFunctions
@@ -29,11 +33,12 @@ public class SettingsPanel : MonoBehaviour
     private void OnEnable()
     {
         EventManager.OpenSettingsMenu.AddListener(OpenSettings);
+        EventManager.CloseSettingsMenu.AddListener(ResumeGame);
     }
     private void OnDisable()
     {
         EventManager.OpenSettingsMenu.RemoveListener(OpenSettings);
-
+        EventManager.CloseSettingsMenu.RemoveListener(ResumeGame);
     }
 
     #endregion

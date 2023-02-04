@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuPanel : MonoBehaviour
@@ -10,16 +8,24 @@ public class MenuPanel : MonoBehaviour
     private void OnEnable()
     {
         PanelBase.ShowPanel();
+        EventManager.OnMenu.AddListener(()=> PanelBase.ShowPanel());
+
+    }
+    private void OnDisable()
+    {
+        EventManager.OnMenu.RemoveListener(() => PanelBase.ShowPanel());
+
     }
     public void StartGame()
     {
-        EventManager.OnGameStart.Invoke();
         PanelBase.HidePanel();
+        EventManager.OnLevelStart.Invoke();
     }
     public void ExitGame()
     {
         Application.Quit();
 
     }
+    
 
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,8 +17,16 @@ public class RTSManager : Singleton<RTSManager>
     {
         AllSelectableCharacters.Remove(selectable);
     }
+    private void ListClear()
+    {
+        AllSelectableCharacters.Clear();
+        SelectedCharacters.Clear();
+    }
     private void CheckClick(Vector3 clickPos)
     {
+        if (!InputManager.Instance.onGame)
+            return;
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(clickPos);
         if(Physics.Raycast(ray,out hit, Mathf.Infinity, rtsCharacterLayer))
@@ -55,7 +62,6 @@ public class RTSManager : Singleton<RTSManager>
     }
     public void ShiftSelect(GameObject selectedObject)
     {
-        Debug.Log("select");
 
         if (!SelectedCharacters.Contains(selectedObject))
         {
@@ -73,10 +79,12 @@ public class RTSManager : Singleton<RTSManager>
     private void OnEnable()
     {
         InputManager.OnMouseClick.AddListener(CheckClick);
+        EventManager.OnMenu.AddListener(ListClear);
     }
     private void OnDisable()
     {
         InputManager.OnMouseClick.RemoveListener(CheckClick);
+        EventManager.OnMenu.RemoveListener(ListClear);
 
     }
     void Start()

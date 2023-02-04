@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-
 public class CharacterController : MonoBehaviour
 {
     Camera myCam;
