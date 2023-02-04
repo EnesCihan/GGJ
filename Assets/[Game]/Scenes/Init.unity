@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1116209817}
   - component: {fileID: 1116209818}
   - component: {fileID: 1116209819}
+  - component: {fileID: 1116209820}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -181,6 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 432e8effb22d06a40bf33626a5105a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectableLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1116209819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +197,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 578f816db9ec55f489f30c9118a8dbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1116209820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116209814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94dc63c65f0c9f74e88363a15eae570c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rtsCharacterLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  SelectedCharacters: []

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
-
+using System.Collections;
+using System.Collections.Generic;
 public class InputManager : MonoBehaviour
 {
     #region Params
@@ -8,7 +9,7 @@ public class InputManager : MonoBehaviour
     bool onMenu;
     bool onOptions;
     #endregion
-
+    public static Vector3Event OnMouseClick = new Vector3Event();
     #region MyMethods
     private void SettingsMenu()
     {
@@ -54,7 +55,7 @@ public class InputManager : MonoBehaviour
         EventManager.CloseSettingsMenu.RemoveListener(OnGameOpen);
 
     }
-
+    public LayerMask selectableLayer;
     void Update()
     {
         if (!onGame && !onMenu && !onOptions)
@@ -66,17 +67,38 @@ public class InputManager : MonoBehaviour
         }
         if(onGame)
         {
-            if(Input.GetButton("ESC"))
+            ShiftKeyCheck();
+            ESCKeyCheck();
+            if(Input.GetMouseButtonDown(0))
             {
-                EventManager.OpenSettingsMenu.Invoke();
+                OnMouseClick.Invoke(Input.mousePosition);
             }
         }
+
         if (onOptions)
         {
-            if (Input.GetButton("ESC"))
-            {
+            ESCKeyCheck();
+        }
+    }
+    private void UnitSelection()
+    {
+
+    }
+    private void ShiftKeyCheck()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+
+        }
+    }
+    private void ESCKeyCheck()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            if(onOptions)
                 EventManager.CloseSettingsMenu.Invoke();
-            }
+            else
+                EventManager.OpenSettingsMenu.Invoke();
         }
     }
     #endregion

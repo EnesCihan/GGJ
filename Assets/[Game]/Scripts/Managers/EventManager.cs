@@ -15,3 +15,4 @@ public class IntEvent : UnityEvent<int> { }
 public class FloatEvent : UnityEvent<float> { }
 public class GameObjectEvent : UnityEvent<GameObject> { }
 public class StringEvent : UnityEvent<string> { }
+public class Vector3Event : UnityEvent<Vector3> { }
