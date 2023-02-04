@@ -7,13 +7,17 @@ public class CameraMove : MonoBehaviour
     private float moveSpeed;
     private float horizontalMove;
     private float verticalMove;
-    public CinemachineVirtualCamera cmv;
-    private float currentZoom;
+    [SerializeField]
+    private CinemachineVirtualCamera cmv;
+    private float cameraDistance;
     private const float MAX_ZOOM = 20f;
+    private CinemachineComponentBase componentBase;
+    [SerializeField]
+    private float sensitivity;
 
     private void Start()
     {
-        currentZoom = cmv.m_Lens.FieldOfView;
+        componentBase = cmv.GetCinemachineComponent(CinemachineCore.Stage.Body);
     }
     void Update()
     {
@@ -31,16 +35,22 @@ public class CameraMove : MonoBehaviour
 
     private void Zoom()
     {
-        Debug.Log(Input.GetAxis("Mouse ScrollWheel"));
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        if(Input.GetAxis("Mouse ScrollWheel") != 0)
         {
-            //cmv.m_Lens.FieldOfView = Mathf.Lerp(currentZoom, MAX_ZOOM, Time.deltaTime * 20f);
-            currentZoom = 20f;
-            cmv.m_Lens.FieldOfView = currentZoom;
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
-        {
-            cmv.m_Lens.FieldOfView = Mathf.Lerp(currentZoom, 60f, Time.deltaTime * 20f);
+            cameraDistance = Input.GetAxis("Mouse ScrollWheel") * sensitivity;
+            if(componentBase is CinemachineFramingTransposer)
+            {
+                (componentBase as CinemachineFramingTransposer).m_CameraDistance -= cameraDistance;
+                float currentDistance = (componentBase as CinemachineFramingTransposer).m_CameraDistance;
+                if (currentDistance < 20f)
+                {
+                    (componentBase as CinemachineFramingTransposer).m_CameraDistance = 20f;
+                }
+                if (currentDistance > 60f)
+                {
+                    (componentBase as CinemachineFramingTransposer).m_CameraDistance = 60f;
+                }
+            }
         }
     }
 }
