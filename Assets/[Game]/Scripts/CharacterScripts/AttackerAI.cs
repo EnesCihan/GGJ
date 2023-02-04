@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AttackerAI : MonoBehaviour,IAIBrain
 {
     #region Params
-
+    Camera myCam;
+    NavMeshAgent myAgent;
+    [SerializeField]
+    private LayerMask ground;
     #endregion
     #region MyMethods
     #endregion
@@ -24,11 +26,26 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     }
     void Start()
     {
-        
+        myCam = Camera.main;
+        myAgent = GetComponent<NavMeshAgent>();
     }
     void Update()
     {
-        
+        if (isSelected == false)
+        {
+            return;
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
+            {
+                myAgent.SetDestination(hit.point);
+                print("get");
+            }
+        }
     }
 
 
