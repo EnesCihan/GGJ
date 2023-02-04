@@ -6,15 +6,19 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     #region Params
     Camera myCam;
     NavMeshAgent myAgent;
+    public CharacterData data;
     [SerializeField]
     private LayerMask ground;
+
+    private NavMeshAgent navmeshAgent;
+    public NavMeshAgent NMAgent { get { return (navmeshAgent == null) ? navmeshAgent = GetComponent<NavMeshAgent>() : navmeshAgent; } }
     #endregion
     #region MyMethods
     #endregion
     #region MonoBehaviourFunctions
     void Awake()
     {
-        
+        NMAgent.speed = data.Speed;
     }
     private void OnEnable()
     {
@@ -33,6 +37,7 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     {
         if (isSelected == false)
         {
+            myAgent.SetDestination(transform.position);
             return;
         }
         if (Input.GetMouseButtonDown(1))

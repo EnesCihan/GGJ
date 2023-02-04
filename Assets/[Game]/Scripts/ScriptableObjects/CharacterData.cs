@@ -4,7 +4,7 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     public Factions FactionType;
-    [Range(0, 5)]
+    [Range(0, 15)]
     public float Speed;
     [Range(0, 100)]
     public int Health;
