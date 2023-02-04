@@ -18,5 +18,5 @@ MonoBehaviour:
   Damage: 10
   AttackRange: 2
   AttackRate: 1
-  TriggerDistance: 10
+  TriggerDistance: 20
   LevelMultiplier: 0

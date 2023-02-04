@@ -15,6 +15,11 @@ public class RTSManager : Singleton<RTSManager>
     }
     public void RemoveSelectable(GameObject selectable)
     {
+        for (int i = 0; i < SelectedCharacters.Count; i++)
+        {
+            if (SelectedCharacters[i] == selectable)
+                SelectedCharacters.RemoveAt(i);
+        }
         AllSelectableCharacters.Remove(selectable);
     }
     private void ListClear()
