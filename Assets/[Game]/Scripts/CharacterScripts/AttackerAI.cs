@@ -28,7 +28,7 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1)&&isSelected)
         {
             RaycastHit hit;
             Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
