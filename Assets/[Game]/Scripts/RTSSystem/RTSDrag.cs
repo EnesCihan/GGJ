@@ -8,7 +8,7 @@ public class RTSDrag : MonoBehaviour
     RectTransform boxVisual;
 
     Rect selectionBox;
-    public bool canWork;
+    public bool canWork=true;
     Vector2 startPosition=Vector2.zero;
     Vector2 endPosition = Vector2.zero;
 

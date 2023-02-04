@@ -3,7 +3,7 @@ using UnityEngine.Events;
 public class InputManager : Singleton<InputManager>
 {
     #region Params
-    [HideInInspector]
+    //[HideInInspector]
     public bool onGame;
     [HideInInspector]
     public bool onMenu;
@@ -12,7 +12,6 @@ public class InputManager : Singleton<InputManager>
     #endregion
     #region Events
     public static Vector3Event OnMouseClick = new Vector3Event();
-    public static UnityEvent OnMouseUp = new UnityEvent();
     #endregion
     #region MyMethods
     private void SettingsMenu()
@@ -64,19 +63,16 @@ public class InputManager : Singleton<InputManager>
             {
                 OnMouseClick.Invoke(Input.mousePosition);
             }
-            if (Input.GetMouseButtonUp(0))
-            {
-                OnMouseUp.Invoke();
-            }
+
         }
     }
 
     private void ESCKeyCheck()
     {
-        if (onOptions)
-            EventManager.CloseSettingsMenu.Invoke();
-        else
+        if (!onOptions)
+        {
             EventManager.OpenSettingsMenu.Invoke();
+        }
     }
     #endregion
 }
