@@ -1,23 +1,34 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Singleton : MonoBehaviour
+public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static Singleton _instance;
-    public static Singleton Instance
+    private static T _instance;
+
+    private static object _lock = new object();
+
+    public static T Instance
     {
         get
         {
-            if (_instance == null)
+            lock (_lock)
             {
-                _instance = FindObjectOfType<Singleton>();
                 if (_instance == null)
                 {
-                    _instance = new GameObject().AddComponent<Singleton>();
+                    _instance = (T)FindObjectOfType(typeof(T));
+
+                    if (FindObjectsOfType(typeof(T)).Length > 1)
+                    {
+                        return null;
+                    }
                 }
+                return _instance;
             }
-            return _instance;
         }
     }
 

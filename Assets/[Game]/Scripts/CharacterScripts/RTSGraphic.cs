@@ -14,6 +14,5 @@ public class RTSGraphic : MonoBehaviour
     public void Selected()
     {
         image.enabled = true;
-        Debug.Log("test");
     }
 }

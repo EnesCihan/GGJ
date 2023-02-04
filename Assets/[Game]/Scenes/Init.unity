@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!114 &1116209819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +213,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   SelectedCharacters: []
+  AllSelectableCharacters: []

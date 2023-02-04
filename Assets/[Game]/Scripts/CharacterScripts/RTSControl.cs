@@ -8,6 +8,10 @@ public class RTSControl : MonoBehaviour,ISelectable
     public IAIBrain AIBrain { get { return (aIBrain == null) ? aIBrain = GetComponent<IAIBrain>() : aIBrain; } }
     private RTSGraphic rtsGraphic;
     public RTSGraphic RTSGraphic { get { return (rtsGraphic == null) ? rtsGraphic = GetComponent<RTSGraphic>() : rtsGraphic; } }
+    private void Awake()
+    {
+        RTSManager.Instance.AddSelectable(gameObject);
+    }
     public void Deselected()
     {
         AIBrain.SelectAI(false);

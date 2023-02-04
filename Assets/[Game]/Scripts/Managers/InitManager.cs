@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InitManager : MonoBehaviour
+public class InitManager : Singleton<InitManager>
 {
     #region Parameters
     public static InitManager instance = null;

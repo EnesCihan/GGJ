@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
-public class InputManager : MonoBehaviour
+public class InputManager : Singleton<InputManager>
 {
     #region Params
     bool onGame;
@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     bool onOptions;
     #endregion
     public static Vector3Event OnMouseClick = new Vector3Event();
+    public static UnityEvent OnMouseUp = new UnityEvent();
     #region MyMethods
     private void SettingsMenu()
     {
@@ -72,6 +73,10 @@ public class InputManager : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 OnMouseClick.Invoke(Input.mousePosition);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                OnMouseUp.Invoke();
             }
         }
 
