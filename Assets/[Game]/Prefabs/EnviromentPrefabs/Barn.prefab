@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1534106434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1534106436}
+  - component: {fileID: 1534106435}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1534106436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534106434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.75, y: 4.2, z: 26.56}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4053247630989866065}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534106435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534106434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b085dfa19af00d549be61046c192536e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseData: {fileID: 11400000, guid: febe698b663f4d44090d93241403a004, type: 2}
+  spawnPoint: {fileID: 1534106436}
 --- !u!1 &830489112446973983
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +305,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053247630989866065}
   - component: {fileID: 742929324}
+  - component: {fileID: 682719721}
   m_Layer: 0
   m_Name: Barn
   m_TagString: Untagged
@@ -285,6 +332,7 @@ Transform:
   - {fileID: 5548754573540992037}
   - {fileID: 4931558821915325707}
   - {fileID: 8135736638443543097}
+  - {fileID: 1534106436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -304,6 +352,22 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &682719721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678270544176246507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbae9c3b2c18e6345b14b0a0bae4edb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BarnData: {fileID: 11400000, guid: febe698b663f4d44090d93241403a004, type: 2}
+  canSpawn: 0
+  Spawners:
+  - {fileID: 1534106435}
 --- !u!1 &3938187643644168567
 GameObject:
   m_ObjectHideFlags: 0

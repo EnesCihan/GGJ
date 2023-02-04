@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300963288d16c104eab84f7db8f9e602, type: 3}
   m_Name: BarnData
   m_EditorClassIdentifier: 
-  Health: 1000
-  spawnTime: 15
-  spawnCount: 5
-  LevelMultiplier: 1.2
+  SpawnPrefab: {fileID: 5849811447845616149, guid: f9ab127ef5be0a34297e86f1dff41590, type: 3}
+  factionType: 0
+  totalHealth: 100
+  spawnRate: 5
+  spawningTime: 5

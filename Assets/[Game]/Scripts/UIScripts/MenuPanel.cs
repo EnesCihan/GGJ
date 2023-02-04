@@ -24,8 +24,6 @@ public class MenuPanel : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-
     }
-    
 
 }

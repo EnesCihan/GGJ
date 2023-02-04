@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d053f6589b796444ba20e5dafd32f04f, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fb51e7c2b12aae4db67c52600e0af2c, type: 3}
   m_Name: TreeBaseData
   m_EditorClassIdentifier: 
-  totalHealth: 20000
-  healthRegenerate: 100
-  maxRoots: 5
-  spawnTime: 5
-  LevelMultiplier: 1.2
+  SpawnPrefab: {fileID: 5849811447845616149, guid: f9ab127ef5be0a34297e86f1dff41590, type: 3}
+  factionType: 1
+  totalHealth: 1000
+  spawnRate: 5
+  spawningTime: 5
+  HealthRegenerate: 100
+  MaxRoots: 5
