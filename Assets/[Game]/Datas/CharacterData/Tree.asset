@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tree
   m_EditorClassIdentifier: 
   FactionType: 1
-  Speed: 3
+  Speed: 10
   Health: 100
   Damage: 10
   AttackRange: 2

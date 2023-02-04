@@ -32,6 +32,8 @@ public class CharacterSetter : MonoBehaviour
         {
             gameObject.AddComponent<DefenderAI>();
             Destroy(gameObject.GetComponent<RTSGraphic>());
+            GetComponent<DefenderAI>().data = Datas[(int)Faction];
+            GetComponent<DefenderAI>().Initialize();
 
         }
 

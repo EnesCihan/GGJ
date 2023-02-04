@@ -15,5 +15,6 @@ MonoBehaviour:
   SpawnPrefab: {fileID: 5849811447845616149, guid: f9ab127ef5be0a34297e86f1dff41590, type: 3}
   factionType: 0
   totalHealth: 100
-  spawnRate: 5
-  spawningTime: 5
+  spawnRate: 10
+  spawningTime: 10
+  MaxSpawnCount: 20

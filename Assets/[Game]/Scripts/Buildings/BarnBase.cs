@@ -9,6 +9,8 @@ public class BarnBase : MonoBehaviour, IDamagable
     private float currentHealth { get => BarnData.totalHealth; set => currentHealth = value; }
     public bool canSpawn;
     public List<Spawner> Spawners;
+    public List<AttackerAI> attackers;
+
     #endregion
     #region MyMethods
     private void Initialize()
@@ -46,11 +48,12 @@ public class BarnBase : MonoBehaviour, IDamagable
     private void OnDisable()
     {
     }
-
     void Update()
     {
         if (canSpawn)
         {
+            if (attackers.Count >= BarnData.MaxSpawnCount)
+                return;
             for (int i = 0; i < Spawners.Count; i++)
             {
                 Spawners[i].SpawnClock();

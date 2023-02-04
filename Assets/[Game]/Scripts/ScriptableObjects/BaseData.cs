@@ -8,4 +8,5 @@ public class BaseData : ScriptableObject
     public int totalHealth;
     public float spawnRate;
     public float spawningTime;
+    public int MaxSpawnCount;
 }

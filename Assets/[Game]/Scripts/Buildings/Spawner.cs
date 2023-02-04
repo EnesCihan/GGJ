@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour
 {
@@ -22,8 +24,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            var go=Instantiate(spawnPrefab, spawnPoint.position,Quaternion.identity,transform);
-            go.transform.SetParent(null);
+            var go=Instantiate(spawnPrefab, transform.position,Quaternion.identity, spawnPoint);
             go.transform.localScale=Vector3.one;
             go.GetComponent<CharacterSetter>().Faction = baseData.factionType;
             go.GetComponent<CharacterSetter>().SetCharacter();
@@ -31,6 +32,4 @@ public class Spawner : MonoBehaviour
     }
 
     #endregion
-
-
 }
