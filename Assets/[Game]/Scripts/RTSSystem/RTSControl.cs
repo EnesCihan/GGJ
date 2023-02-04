@@ -10,6 +10,8 @@ public class RTSControl : MonoBehaviour,ISelectable
     public RTSGraphic RTSGraphic { get { return (rtsGraphic == null) ? rtsGraphic = GetComponent<RTSGraphic>() : rtsGraphic; } }
     private void Awake()
     {
+        if (RTSManager.Instance == null)
+            return;
         RTSManager.Instance.AddSelectable(gameObject);
     }
     public void Deselected()
