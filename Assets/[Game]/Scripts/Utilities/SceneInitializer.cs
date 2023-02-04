@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneInitializer : MonoBehaviour
 {
-    private void Start()
+    private void OnEnable()
     {
         if (SceneManager.sceneCount > 1)
         {
             Destroy(gameObject);
-        }else
+        }
+        else
             StartCoroutine(LoadScenesCO());
     }
     private IEnumerator LoadScenesCO()
