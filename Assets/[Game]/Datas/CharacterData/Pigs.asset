@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Pigs
   m_EditorClassIdentifier: 
   FactionType: 0
-  Speed: 3
+  Speed: 10
   Health: 100
   Damage: 10
   AttackRange: 2
   AttackRate: 1
   TriggerDistance: 10
+  LevelMultiplier: 0
