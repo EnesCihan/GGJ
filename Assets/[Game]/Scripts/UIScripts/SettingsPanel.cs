@@ -1,40 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SettingsPanel : MonoBehaviour
 {
-#region StringParams
-#endregion
-#region IntParams
-#endregion
-#region FloatParams
-#endregion
-#region GameObjectParams
-#endregion
-#region MyMethods
-#endregion
-#region MonoBehaviourFunctions
-    void Awake()
+    #region Params
+    private PanelBase panelBase;
+    public PanelBase PanelBase { get { return (panelBase == null) ? panelBase = GetComponent<PanelBase>() : panelBase; } }
+    #endregion
+
+    #region MyMethods
+    public void ResumeGame()
     {
-        
+        PanelBase.HidePanel();
+        EventManager.OnMenu.Invoke();
     }
+    public void GoBackMenu()
+    {
+        PanelBase.HidePanel();
+        EventManager.OnGameStart.Invoke();
+
+    }
+    private void OpenSettings()
+    {
+        PanelBase.ShowPanel();
+    }
+    #endregion
+    #region MonoBehaviourFunctions
+
     private void OnEnable()
     {
-	  
+        EventManager.OpenSettingsMenu.AddListener(OpenSettings);
     }
     private void OnDisable()
     {
-	  
+        EventManager.OpenSettingsMenu.RemoveListener(OpenSettings);
+
     }
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
-#endregion
+
+    #endregion
 
 }

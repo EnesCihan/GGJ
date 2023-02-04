@@ -9,10 +9,10 @@ public class CameraMove : MonoBehaviour
     private float horizontalMove;
     private float verticalMove;
 
-
     void Update()
     {
         Move();
+        
     }
 
     private void Move()

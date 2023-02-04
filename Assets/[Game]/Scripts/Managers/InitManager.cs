@@ -15,7 +15,7 @@ public class InitManager : Singleton<InitManager>
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            StartCoroutine(LoadScenesCO());
+            StartCoroutine(LoadScenesCO(1));
         }
         else if (instance != null)
         {
@@ -24,12 +24,28 @@ public class InitManager : Singleton<InitManager>
     }
     #endregion
     #region My Methods
-    private IEnumerator LoadScenesCO()
+    private IEnumerator LoadScenesCO(int sceneIndex)
     {
-        yield return SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
-        yield return SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+        yield return SceneManager.LoadSceneAsync(sceneIndex, LoadSceneMode.Additive);
+    }
+    private void OpenGameScene()
+    {
+        StartCoroutine(LoadScenesCO(2));
+    }
+    private void CloseGameScene()
+    {
 
     }
     #endregion
+    private void OnEnable()
+    {
+        EventManager.OnGameStart.AddListener(OpenGameScene);
+        EventManager.OnMenu.AddListener(OpenGameScene);
 
+    }
+    private void OnDisable()
+    {
+        EventManager.OnGameStart.RemoveListener(OpenGameScene);
+
+    }
 }
