@@ -7,8 +7,14 @@ public class CharacterHealth : MonoBehaviour,IDamagable
 {
     public Slider HealthBar;
     public float currentHealth;
-    public float maxHealth;
-    bool isDead;
+    public float maxHealth; 
+    public bool isDead;
+    private CharacterAnimationController cAnimController;
+
+    private void Start()
+    {
+        cAnimController = GetComponentInChildren<CharacterAnimationController>();
+    }
     private void Update()
     {
         if (isDead)
@@ -31,9 +37,12 @@ public class CharacterHealth : MonoBehaviour,IDamagable
 
     public void Die()
     {
+        if (isDead)
+            return;
         HealthBar.enabled = false;
         if(GetComponent<AttackerAI>()!=null)
             RTSManager.Instance.RemoveSelectable(gameObject);
+        cAnimController.Animator.SetTrigger("isDead");
         Destroy(gameObject, 3);
     }
 }

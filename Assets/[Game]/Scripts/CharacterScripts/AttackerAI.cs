@@ -18,6 +18,7 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     void Update()
     {
         CheckForEnemy();
+        
         if (!isSelected)
         {
             return;
@@ -34,7 +35,7 @@ public class AttackerAI : MonoBehaviour,IAIBrain
             }
         }
     }
-
+    private CharacterAnimationController cAnimController;
 
     #endregion
     #region AttackMethods
@@ -74,12 +75,14 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     }
     private void Attack()
     {
-        if (target == null)
+        if (target == null||target.GetComponent<CharacterHealth>().isDead)
         {
             isAttacking = false;
-            return;
+            return;     
         }
         transform.DOLookAt(target.transform.position,0.2f);
+        cAnimController.Animator.SetTrigger("isAttack");
+
         target.GetComponent<IDamagable>().GetDamage(data.Damage);
     }
     #endregion
@@ -92,16 +95,24 @@ public class AttackerAI : MonoBehaviour,IAIBrain
             if (!isAttacking)
             {
                 NMAgent.SetDestination(transform.position);
+                cAnimController.Animator.SetFloat("Speed", 0);
                 return true;
             }
             else
             {
-
+                cAnimController.Animator.SetFloat("Speed", 0);
                 AttackCount();
                 return false;
             }
         }
-        else return false;
+
+        else 
+        {
+            cAnimController.Animator.SetFloat("Speed", 1);
+            return false;
+
+        }
+
     }
     public void Initialize()
     {
@@ -111,6 +122,7 @@ public class AttackerAI : MonoBehaviour,IAIBrain
         NMAgent.SetDestination(transform.position);
         GetComponent<CharacterHealth>().currentHealth = data.Health;
         GetComponent<CharacterHealth>().maxHealth = data.Health;
+        cAnimController = GetComponentInChildren<CharacterAnimationController>();
     }
 
     public void SelectAI(bool status)

@@ -22,6 +22,7 @@ public class Spawner : MonoBehaviour
     }
     private void Spawn(int count)
     {
+
         for (int i = 0; i < count; i++)
         {
             var go=Instantiate(spawnPrefab, transform.position,Quaternion.identity, spawnPoint);

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436530158512365822}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6023995704715713001}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joint_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 3516165705873275951}
   - component: {fileID: 2469284022793283779}
   - component: {fileID: 3402647934393850809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3659892897887773937}
   - component: {fileID: 4067132822747496923}
   - component: {fileID: 712729709109095226}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LegRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5282619906524603683}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joint_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6716884505616505944}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RootIK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6494697145082483242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joint_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8429431766893549880}
   - component: {fileID: 1905401176132809794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AngryLog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ Transform:
   m_GameObject: {fileID: 4800839809881058091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.020285659, y: 1.2180605, z: -0.02563924}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5369955607875091477}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 1763586442859414856}
   - component: {fileID: 3801033428946870571}
   - component: {fileID: 7915431812230574855}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LegLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3989833778519278500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Joint_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 5411769468867150402}
   - component: {fileID: 6551515636505381864}
   - component: {fileID: 2801666163011384620}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 4261550610954551214}
   - component: {fileID: 1547433158047572086}
   - component: {fileID: 7156599124085610601}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8997283943244799899}
   - component: {fileID: 2839571451725932692}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,7 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5369955607875091477}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FullBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}

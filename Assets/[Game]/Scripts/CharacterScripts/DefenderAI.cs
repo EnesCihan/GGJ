@@ -59,13 +59,21 @@ public class DefenderAI : MonoBehaviour, IAIBrain
         {
             if (isPatrolling)
             {
+                isPatrolling = false;
                 StartCoroutine(WaitCO());
+                Debug.Log("test2");
                 return true;
             }
             else
                 return false;
         }
-        else return false;
+        else
+        {
+            Debug.Log("test1");
+            cAnimController.Animator.SetFloat("Speed", 1);
+            return false;
+        }
+
     }
     private float lastAttackTime;
     private void AttackCount()
@@ -78,16 +86,17 @@ public class DefenderAI : MonoBehaviour, IAIBrain
     }
     private void Attack()
     {
-        if (target == null)
+        if (target == null || target.GetComponent<CharacterHealth>().isDead)
         {
             isAttacking = false;
+            cAnimController.Animator.SetTrigger("isAttack");
             return;
         }
         target.GetComponent<IDamagable>().GetDamage(data.Damage);
     }
     private void TargetFollow()
     {
-        if (target == null)
+        if (target == null || target.GetComponent<CharacterHealth>().isDead)
         {
             isAttacking=false;
             return;
@@ -107,12 +116,16 @@ public class DefenderAI : MonoBehaviour, IAIBrain
     }
     IEnumerator WaitCO()
     {
+        cAnimController.Animator.SetFloat("Speed",0);
+
         yield return new WaitForSeconds(3);
-        if (isPatrolling)
+        if (!isAttacking)
         {
             NMAgent.SetDestination(RandomPos());
+            isPatrolling = true;
         }
     }
+    private CharacterAnimationController cAnimController;
     public void Initialize()
     {
         NMAgent.speed = data.Speed;
@@ -120,6 +133,8 @@ public class DefenderAI : MonoBehaviour, IAIBrain
         NMAgent.SetDestination(RandomPos());
         GetComponent<CharacterHealth>().currentHealth = data.Health;
         GetComponent<CharacterHealth>().maxHealth = data.Health;
+        cAnimController = GetComponentInChildren<CharacterAnimationController>();
+
     }
 
     public void SelectAI(bool status)

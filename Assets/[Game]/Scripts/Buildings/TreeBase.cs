@@ -70,24 +70,21 @@ public class TreeBase : MonoBehaviour, IDamagable
     {
         Initialize();
     }
-
-
     void Update()
     {
         if (GameManager.Instance.gameEnd)
         {
             return;
         }
-
         healthBar.value = currentHealth;
         if (canRegenerate)
             Regenerate();
         if (canSpawn)
         {
-            if (defenders.Count >= TreeBaseData.MaxSpawnCount)
-                return;
             for (int i = 0; i < Spawners.Count; i++)
             {
+                if (defenders.Count >= TreeBaseData.MaxSpawnCount)
+                    return;
                 Spawners[i].SpawnClock();
             }
         }

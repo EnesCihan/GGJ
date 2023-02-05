@@ -12,10 +12,12 @@ public class SkinController : MonoBehaviour
             case Factions.Pigs:
                 Skins[0].SetActive(true);
                 Skins[1].SetActive(false);
+                GetComponent<CharacterAnimationController>().Animator = Skins[0].GetComponent<Animator>();
                 break;
             case Factions.Tree:
                 Skins[1].SetActive(true);
                 Skins[0].SetActive(false);
+                GetComponent<CharacterAnimationController>().Animator = Skins[1].GetComponent<Animator>();
                 break;
 
             default:
