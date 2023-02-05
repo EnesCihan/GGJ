@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/[Game]/Scenes/UI.unity
     guid: 6a73475fb21020f42b702640d66dace7
   - enabled: 1
-    path: Assets/[Game]/Scenes/Enes Cihan.unity
-    guid: 03d3cbdc258402548bf26aa699552127
+    path: Assets/[Game]/Scenes/BurakScene.unity
+    guid: 1ce198745e9ab3140bd321ffb73dba68
   m_configObjects: {}
