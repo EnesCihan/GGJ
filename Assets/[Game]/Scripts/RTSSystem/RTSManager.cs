@@ -36,6 +36,8 @@ public class RTSManager : Singleton<RTSManager>
         Ray ray = Camera.main.ScreenPointToRay(clickPos);
         if(Physics.Raycast(ray,out hit, Mathf.Infinity, rtsCharacterLayer))
         {
+            if (hit.collider.gameObject.GetComponent<DefenderAI>())
+                return;
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 ShiftSelect(hit.collider.gameObject);
