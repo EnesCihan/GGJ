@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 
 public class AttackerAI : MonoBehaviour,IAIBrain
 {
@@ -11,8 +12,6 @@ public class AttackerAI : MonoBehaviour,IAIBrain
     bool isAttacking;
     private NavMeshAgent navmeshAgent;
     public NavMeshAgent NMAgent { get { return (navmeshAgent == null) ? navmeshAgent = GetComponent<NavMeshAgent>() : navmeshAgent; } }
-    #endregion
-    #region MyMethods
     #endregion
     #region MonoBehaviourFunctions
 
@@ -35,6 +34,10 @@ public class AttackerAI : MonoBehaviour,IAIBrain
             }
         }
     }
+
+
+    #endregion
+    #region AttackMethods
     private void CheckForEnemy()
     {
         if (isAttacking)
@@ -47,12 +50,40 @@ public class AttackerAI : MonoBehaviour,IAIBrain
 
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.GetComponent<DefenderAI>())
+            if (hitCollider.gameObject.GetComponent<DefenderAI>()|| hitCollider.gameObject.GetComponent<TreeBase>())
             {
                 MoveEnemy(hitCollider.gameObject);
             }
+
         }
     }
+    private void MoveEnemy(GameObject enemy)
+    {
+        isAttacking = true;
+        target = enemy;
+        NMAgent.SetDestination(target.transform.position);
+    }
+    private float lastAttackTime;
+    private void AttackCount()
+    {
+        if (Time.time >= lastAttackTime + data.AttackRate)
+        {
+            Attack();
+            lastAttackTime = Time.time;
+        }
+    }
+    private void Attack()
+    {
+        if (target == null)
+        {
+            isAttacking = false;
+            return;
+        }
+        transform.DOLookAt(target.transform.position,0.2f);
+        target.GetComponent<IDamagable>().GetDamage(data.Damage);
+    }
+    #endregion
+    #region AIMethods
     bool IsDestinationReach()
     {
         float distToTarget = Vector3.Distance(transform.position, NMAgent.destination);
@@ -71,33 +102,6 @@ public class AttackerAI : MonoBehaviour,IAIBrain
             }
         }
         else return false;
-    }
-    private void MoveEnemy(GameObject enemy)
-    {
-        isAttacking = true;
-        target = enemy;
-        NMAgent.SetDestination(target.transform.position);
-    }
-    #endregion
-    #region AIMethods
-    private float lastAttackTime;
-    private void AttackCount()
-    {
-        Debug.Log("test");
-        if (Time.time >= lastAttackTime + data.AttackRate)
-        {
-            Attack();
-            lastAttackTime = Time.time;
-        }
-    }
-    private void Attack()
-    {
-        if (target == null)
-        {
-            isAttacking = false;
-            return;
-        }
-        target.GetComponent<IDamagable>().GetDamage(data.Damage);
     }
     public void Initialize()
     {

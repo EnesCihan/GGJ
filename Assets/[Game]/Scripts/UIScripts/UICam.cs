@@ -5,15 +5,17 @@ using UnityEngine;
 public class UICam : MonoBehaviour
 {
     Camera cam;
-
+    public Light dirLight;
     #region MyMethods
     private void CameraOff()
     {
         cam.enabled = false;
+        dirLight.enabled = false;
     }
     private void CameraOn()
     {
         cam.enabled = true;
+        dirLight.enabled = true;
 
     }
     #endregion

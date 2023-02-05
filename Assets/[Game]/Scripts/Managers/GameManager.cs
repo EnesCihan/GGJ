@@ -4,6 +4,7 @@ public class GameManager : Singleton<GameManager>
 {
     #region Params
     public bool stopGame;
+    public bool gameEnd;
     #endregion
     #region Events
     public static UnityEvent OnGameWin = new UnityEvent();
@@ -21,11 +22,11 @@ public class GameManager : Singleton<GameManager>
     }
     private void WinGame()
     {
-
+        gameEnd = true;
     }
     private void LooseGame()
     {
-
+        gameEnd = true;
     }
     #endregion  
     #region MonoBehaviourFunctions
